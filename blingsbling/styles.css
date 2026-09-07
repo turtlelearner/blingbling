@@ -1,0 +1,506 @@
+/* ===================================================================
+   Nutrisyon Notes — design tokens
+   Palette: blush white + petal pink, warm capybara brown, daisy yellow.
+   Type: Fraunces (display serif) for the study content, Quicksand
+   (rounded sans) for interface chrome — kept clearly distinct.
+=================================================================== */
+
+:root {
+  /* color */
+  --color-bg: #fff6f9;
+  --color-surface: #ffffff;
+  --color-petal: #ffffff;
+  --color-primary: #f2a6c6;
+  --color-primary-dark: #a8386c;
+  --color-primary-tint: #fde3ee;
+  --color-fill-strong: #a8386c;
+  --color-fill-strong-hover: #8a2e52;
+  --color-accent: #ffd966;
+  --color-ink: #3d2833;
+  --color-ink-soft: #7a5c6a;
+  --color-capybara: #b98a63;
+  --color-capybara-light: #d9b48c;
+  --color-capybara-dark: #8f6748;
+  --color-shadow-soft: rgba(61, 40, 51, 0.08);
+  --color-shadow-card: rgba(184, 96, 138, 0.22);
+
+  /* type */
+  --font-display: "Fraunces", "Iowan Old Style", serif;
+  --font-body: "Quicksand", "Segoe UI", sans-serif;
+
+  /* layout */
+  --content-width: 620px;
+  --radius-lg: 28px;
+  --radius-md: 18px;
+  --radius-pill: 999px;
+
+  color-scheme: light;
+  transition: background-color 200ms ease, color 200ms ease;
+}
+
+/* "Black mode" — a deep plum-black theme, same pink accent family
+   pushed brighter so it still reads as the same app after dark. */
+:root[data-theme="dark"] {
+  --color-bg: #1b1420;
+  --color-surface: #241a2b;
+  --color-petal: #362736;
+  --color-primary: #5c2f42;
+  --color-primary-dark: #ff86bd;
+  --color-primary-tint: #35202b;
+  --color-fill-strong: #c2477c;
+  --color-fill-strong-hover: #a83a68;
+  --color-accent: #ffd966;
+  --color-ink: #f6e9ef;
+  --color-ink-soft: #cbb0bd;
+  --color-capybara: #c99a6f;
+  --color-capybara-light: #e2c39a;
+  --color-capybara-dark: #a67a52;
+  --color-shadow-soft: rgba(0, 0, 0, 0.45);
+  --color-shadow-card: rgba(255, 134, 189, 0.16);
+
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--color-bg);
+  background-image:
+    radial-gradient(circle at 8% 12%, var(--color-primary-tint) 0%, transparent 42%),
+    radial-gradient(circle at 94% 82%, var(--color-primary-tint) 0%, transparent 38%);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* decorative daisy row along the very top of the page */
+.field {
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+.field__daisies {
+  width: 100%;
+  height: 34px;
+  display: block;
+}
+
+.page {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0.5rem 1.25rem 3rem;
+}
+
+/* ---------- header ---------- */
+
+.hero {
+  padding: 1.5rem 0 1rem;
+}
+
+.hero__title-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.hero__title-row > div {
+  flex: 1;
+  min-width: 0;
+}
+
+.hero__mascot-small {
+  width: 64px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+.theme-toggle {
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid var(--color-primary-tint);
+  background: var(--color-surface);
+  color: var(--color-primary-dark);
+  cursor: pointer;
+  transition: background-color 150ms ease, border-color 150ms ease, transform 120ms ease;
+  align-self: flex-start;
+}
+
+.theme-toggle:hover {
+  border-color: var(--color-primary);
+}
+
+.theme-toggle:active {
+  transform: scale(0.94);
+}
+
+.theme-toggle__icon {
+  width: 20px;
+  height: 20px;
+}
+
+.theme-toggle__icon--sun {
+  display: none;
+}
+
+:root[data-theme="dark"] .theme-toggle__icon--moon {
+  display: none;
+}
+
+:root[data-theme="dark"] .theme-toggle__icon--sun {
+  display: block;
+}
+
+.hero__title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.6rem, 4vw, 2.1rem);
+  margin: 0 0 0.2rem;
+  color: var(--color-primary-dark);
+}
+
+.hero__subtitle {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: var(--color-ink-soft);
+  max-width: 42ch;
+}
+
+/* ---------- category tabs ---------- */
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.5rem 0 1.75rem;
+}
+
+.tab {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: var(--color-primary-dark);
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-primary-tint);
+  border-radius: var(--radius-pill);
+  padding: 0.5rem 1.1rem;
+  cursor: pointer;
+  transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease, transform 120ms ease;
+}
+
+.tab:hover {
+  border-color: var(--color-primary);
+}
+
+.tab:active {
+  transform: scale(0.97);
+}
+
+.tab[aria-selected="true"] {
+  background: var(--color-fill-strong);
+  border-color: var(--color-fill-strong);
+  color: #fff;
+}
+
+.tab:focus-visible,
+.btn:focus-visible,
+.flashcard:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* ---------- stage / flashcard ---------- */
+
+.stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stage__card-wrap {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.stage__mascot {
+  position: absolute;
+  right: -8px;
+  bottom: -34px;
+  width: 92px;
+  height: auto;
+  z-index: 0;
+  filter: drop-shadow(0 6px 8px var(--color-shadow-soft));
+}
+
+.flashcard {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 480px;
+  aspect-ratio: 4 / 3;
+  cursor: pointer;
+  perspective: 1400px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.flashcard__inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 620ms cubic-bezier(0.22, 0.85, 0.4, 1);
+  transform-style: preserve-3d;
+}
+
+.flashcard[aria-pressed="true"] .flashcard__inner {
+  transform: rotateY(180deg);
+}
+
+.flashcard__face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+  padding: 2rem 2.2rem;
+  border-radius: var(--radius-lg);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  background: var(--color-surface);
+  box-shadow: 0 18px 34px -14px var(--color-shadow-card), 0 2px 0 var(--color-primary-tint) inset;
+  border: 1.5px solid var(--color-primary-tint);
+}
+
+.flashcard__face--front {
+  transform: rotateY(0deg);
+}
+
+.flashcard__face--back {
+  transform: rotateY(180deg);
+  background: linear-gradient(165deg, var(--color-surface) 0%, var(--color-primary-tint) 130%);
+}
+
+.flashcard__eyebrow {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.01em;
+  color: var(--color-primary-dark);
+  background: var(--color-primary-tint);
+  padding: 0.3rem 0.85rem;
+  border-radius: var(--radius-pill);
+}
+
+.flashcard__text {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.15rem, 3.4vw, 1.55rem);
+  line-height: 1.3;
+  color: var(--color-ink);
+  margin: 0;
+}
+
+/* Front face: the meaning/description, set for comfortable reading */
+.flashcard__text--statement {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: clamp(1rem, 2.6vw, 1.15rem);
+  line-height: 1.5;
+  color: var(--color-ink);
+}
+
+/* Back face: the revealed code/label, set as the bold headline moment */
+.flashcard__text--code {
+  color: var(--color-primary-dark);
+}
+
+.flashcard__hint {
+  font-size: 0.78rem;
+  color: var(--color-ink-soft);
+  font-weight: 600;
+}
+
+/* ---------- progress ---------- */
+
+.progress {
+  width: 100%;
+  max-width: 480px;
+  margin-top: 2.25rem;
+}
+
+.progress__label {
+  margin: 0 0 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-ink-soft);
+  text-align: center;
+}
+
+.progress__track {
+  position: relative;
+  height: 8px;
+  background: var(--color-primary-tint);
+  border-radius: var(--radius-pill);
+  overflow: visible;
+}
+
+.progress__fill {
+  height: 100%;
+  width: 0%;
+  background: var(--color-fill-strong);
+  border-radius: var(--radius-pill);
+  transition: width 320ms ease;
+}
+
+.progress__marker {
+  position: absolute;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  left: 0%;
+  transform: translate(-50%, -50%);
+  transition: left 320ms ease;
+}
+
+/* ---------- controls ---------- */
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 1.75rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.92rem;
+  border-radius: var(--radius-pill);
+  padding: 0.7rem 1.3rem;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: background-color 150ms ease, transform 120ms ease, box-shadow 150ms ease;
+}
+
+.btn:active {
+  transform: scale(0.96);
+}
+
+.btn__icon {
+  width: 18px;
+  height: 18px;
+}
+
+.btn--ghost {
+  background: var(--color-surface);
+  color: var(--color-primary-dark);
+  border-color: var(--color-primary-tint);
+}
+
+.btn--ghost:hover {
+  border-color: var(--color-primary);
+}
+
+.btn--primary {
+  background: var(--color-fill-strong);
+  color: #fff;
+  box-shadow: 0 10px 20px -8px var(--color-shadow-card);
+}
+
+.btn--primary:hover {
+  background: var(--color-fill-strong-hover);
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.keys-hint {
+  margin: 1.1rem 0 0;
+  font-size: 0.78rem;
+  color: var(--color-ink-soft);
+  text-align: center;
+}
+
+/* ---------- footer ---------- */
+
+.footer {
+  margin-top: 3rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--color-ink-soft);
+}
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 480px) {
+  .hero__title-row {
+    gap: 0.7rem;
+  }
+  .hero__mascot-small {
+    width: 52px;
+  }
+  .theme-toggle {
+    width: 36px;
+    height: 36px;
+  }
+  .theme-toggle__icon {
+    width: 17px;
+    height: 17px;
+  }
+  .flashcard {
+    max-width: 100%;
+    aspect-ratio: 3 / 4;
+  }
+  .flashcard__face {
+    padding: 1.6rem 1.4rem;
+  }
+  .stage__mascot {
+    width: 68px;
+    right: -4px;
+    bottom: -24px;
+  }
+  .controls {
+    gap: 0.5rem;
+  }
+  .btn {
+    padding: 0.65rem 1rem;
+    font-size: 0.86rem;
+  }
+}
+
+/* ---------- reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .flashcard__inner,
+  .progress__fill,
+  .progress__marker,
+  .tab,
+  .btn {
+    transition-duration: 1ms !important;
+  }
+}

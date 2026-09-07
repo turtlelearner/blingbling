@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nutrisyon Notes — Public Health Nutrition Flashcards</title>
+<meta name="description" content="Flashcards on the history and legislation of public health nutrition in the Philippines.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="field">
+  <svg class="field__daisies" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true">
+    <use href="#daisy-icon" x="40" y="6" width="28" height="28"></use>
+    <use href="#daisy-icon" x="230" y="18" width="20" height="20"></use>
+    <use href="#daisy-icon" x="480" y="2" width="24" height="24"></use>
+    <use href="#daisy-icon" x="740" y="20" width="18" height="18"></use>
+    <use href="#daisy-icon" x="960" y="4" width="26" height="26"></use>
+    <use href="#daisy-icon" x="1120" y="16" width="20" height="20"></use>
+  </svg>
+</div>
+
+<!-- Shared SVG symbols (icons + mascot), referenced via <use> -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="daisy-icon" viewBox="0 0 40 40">
+      <g fill="var(--color-petal)" stroke="var(--color-primary-dark)" stroke-width="1.5">
+        <ellipse cx="20" cy="8" rx="6" ry="8"/>
+        <ellipse cx="20" cy="32" rx="6" ry="8"/>
+        <ellipse cx="8" cy="20" rx="8" ry="6"/>
+        <ellipse cx="32" cy="20" rx="8" ry="6"/>
+        <ellipse cx="11.5" cy="11.5" rx="6" ry="8" transform="rotate(-45 11.5 11.5)"/>
+        <ellipse cx="28.5" cy="28.5" rx="6" ry="8" transform="rotate(-45 28.5 28.5)"/>
+        <ellipse cx="28.5" cy="11.5" rx="6" ry="8" transform="rotate(45 28.5 11.5)"/>
+        <ellipse cx="11.5" cy="28.5" rx="6" ry="8" transform="rotate(45 11.5 28.5)"/>
+      </g>
+      <circle cx="20" cy="20" r="7" fill="var(--color-accent)"/>
+    </symbol>
+
+    <symbol id="icon-chevron-left" viewBox="0 0 24 24">
+      <path d="M15 5 L8 12 L15 19" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="icon-chevron-right" viewBox="0 0 24 24">
+      <path d="M9 5 L16 12 L9 19" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="icon-shuffle" viewBox="0 0 24 24">
+      <path d="M3 6h3.5c1.6 0 3 .9 3.8 2.3M3 18h3.5c1.6 0 3-.9 3.8-2.3M14 6h7m0 0-2.6-2.6M21 6l-2.6 2.6M14 18h7m0 0-2.6-2.6m2.6 2.6-2.6 2.6M10.3 8.3 12 10.6m0 2.8-1.7 2.3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="icon-moon" viewBox="0 0 24 24">
+      <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="icon-sun" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <path d="M12 2.5v2.3M12 19.2v2.3M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2.5 12h2.3M19.2 12h2.3M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    </symbol>
+
+    <!-- Capybara mascot, sitting, with a daisy tucked behind its ear -->
+    <symbol id="mascot-capybara" viewBox="0 0 200 160">
+      <ellipse cx="100" cy="148" rx="70" ry="9" fill="var(--color-shadow-soft)"/>
+      <!-- back haunch -->
+      <path d="M42 130c-10-18-14-40-2-58 8-12 20-18 30-18 4-16 20-27 38-27 22 0 40 16 42 37 10 4 17 14 17 26 0 20-16 40-45 44-30 4-64 12-80-4z" fill="var(--color-capybara)"/>
+      <!-- lighter belly -->
+      <path d="M60 122c-6-14-8-30 2-44 9 20 30 30 55 27 6 10 6 22-2 30-16 14-46 10-55-13z" fill="var(--color-capybara-light)"/>
+      <!-- ear -->
+      <ellipse cx="66" cy="46" rx="7" ry="8" fill="var(--color-capybara-dark)"/>
+      <!-- snout -->
+      <ellipse cx="52" cy="70" rx="19" ry="15" fill="var(--color-capybara)"/>
+      <ellipse cx="46" cy="76" rx="7" ry="5" fill="var(--color-capybara-light)"/>
+      <!-- nostril + eye -->
+      <ellipse cx="40" cy="75" rx="2.2" ry="1.6" fill="var(--color-ink)"/>
+      <circle cx="63" cy="58" r="2.6" fill="var(--color-ink)"/>
+      <!-- little smile -->
+      <path d="M44 82c3 3 7 3 10 0" fill="none" stroke="var(--color-ink)" stroke-width="1.6" stroke-linecap="round"/>
+      <!-- front leg -->
+      <ellipse cx="70" cy="128" rx="10" ry="14" fill="var(--color-capybara-dark)"/>
+      <!-- daisy tucked by the ear -->
+      <g transform="translate(78 30) rotate(-12)">
+        <use href="#daisy-icon" width="26" height="26"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<main class="page">
+
+  <header class="hero">
+    <div class="hero__title-row">
+      <svg class="hero__mascot-small" viewBox="0 0 200 160" role="img" aria-label="A capybara with a daisy behind its ear">
+        <use href="#mascot-capybara"/>
+      </svg>
+      <div>
+        <h1 class="hero__title">Nutrisyon Notes</h1>
+        <p class="hero__subtitle">Flashcards on the story and the statutes of public health nutrition in the Philippines</p>
+      </div>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Turn on dark mode">
+        <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-moon"/></svg>
+        <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-sun"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <nav class="tabs" role="tablist" aria-label="Card categories" id="categoryTabs"></nav>
+
+  <section class="stage" aria-label="Flashcard">
+
+    <div class="stage__card-wrap">
+      <div
+        class="flashcard"
+        id="flashcard"
+        role="button"
+        tabindex="0"
+        aria-pressed="false"
+        aria-label="Flashcard. Press space or enter to flip."
+      >
+        <div class="flashcard__inner" id="flashcardInner">
+          <div class="flashcard__face flashcard__face--front">
+            <span class="flashcard__eyebrow" id="frontCategoryLabel">History</span>
+            <p class="flashcard__text flashcard__text--statement" id="frontText"></p>
+            <span class="flashcard__hint">tap to reveal</span>
+          </div>
+          <div class="flashcard__face flashcard__face--back">
+            <p class="flashcard__text flashcard__text--code" id="backText"></p>
+            <span class="flashcard__hint">tap to flip back</span>
+          </div>
+        </div>
+      </div>
+
+      <svg class="stage__mascot" viewBox="0 0 200 160" aria-hidden="true">
+        <use href="#mascot-capybara"/>
+      </svg>
+    </div>
+
+    <div class="progress">
+      <p class="progress__label" id="progressLabel" aria-live="polite">Card 1 of 1</p>
+      <div class="progress__track">
+        <div class="progress__fill" id="progressFill"></div>
+        <svg class="progress__marker" id="progressMarker" viewBox="0 0 40 40" aria-hidden="true">
+          <use href="#daisy-icon"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button class="btn btn--ghost" id="prevBtn" type="button" aria-label="Previous card">
+        <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-chevron-left"/></svg>
+        <span>Previous</span>
+      </button>
+      <button class="btn btn--primary" id="shuffleBtn" type="button" aria-label="Shuffle this deck">
+        <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-shuffle"/></svg>
+        <span>Shuffle</span>
+      </button>
+      <button class="btn btn--ghost" id="nextBtn" type="button" aria-label="Next card">
+        <span>Next</span>
+        <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-chevron-right"/></svg>
+      </button>
+    </div>
+
+    <p class="keys-hint">Space or enter flips the card · left and right arrows move between cards</p>
+
+  </section>
+
+  <footer class="footer">
+    <p>Built for reviewing Philippine public health nutrition history, institutions, and law.</p>
+  </footer>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
